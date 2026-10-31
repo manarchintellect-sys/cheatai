@@ -67,7 +67,8 @@ export default buildConfig({
       connectionString:
         (process.env.CHEATAI_BUILD === '1' && process.env.DATABASE_PUBLIC_URL) || process.env.DATABASE_URL || '',
     },
-    prodMigrations: migrations,
+    // Во время сборки миграции применяются отдельным шагом (npm run migrate:build), чтобы воркеры сборки не запускали их параллельно
+    prodMigrations: process.env.CHEATAI_BUILD === '1' ? undefined : migrations,
     // в dev схема синхронизируется автоматически; PAYLOAD_DB_PUSH=false — работать только через миграции
     push: process.env.PAYLOAD_DB_PUSH !== 'false',
   }),

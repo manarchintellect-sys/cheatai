@@ -13,7 +13,8 @@
     "lint": "cross-env NODE_OPTIONS=--no-deprecation eslint .",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
-    "seed": "cross-env NODE_OPTIONS=--no-deprecation DISABLE_JOBS=true payload run src/seed/run.ts"
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation DISABLE_JOBS=true payload run src/seed/run.ts",
+    "migrate:build": "cross-env CHEATAI_BUILD=1 NODE_OPTIONS=--no-deprecation payload migrate"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.3.0",
