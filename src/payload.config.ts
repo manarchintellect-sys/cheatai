@@ -65,7 +65,7 @@ export default buildConfig({
     pool: {
       // На Railway во время сборки приватная сеть недоступна — используем публичный адрес БД
       connectionString:
-        (process.env.NEXT_PHASE === 'phase-production-build' && process.env.DATABASE_PUBLIC_URL) || process.env.DATABASE_URL || '',
+        (process.env.CHEATAI_BUILD === '1' && process.env.DATABASE_PUBLIC_URL) || process.env.DATABASE_URL || '',
     },
     prodMigrations: migrations,
     // в dev схема синхронизируется автоматически; PAYLOAD_DB_PUSH=false — работать только через миграции
@@ -84,7 +84,7 @@ export default buildConfig({
       payload.logger.warn('pg_trgm недоступен — поиск будет без исправления опечаток')
     }
     // Первый запуск на пустой базе: демо-контент (только в рантайме, не во время сборки)
-    if (process.env.SEED_IF_EMPTY === 'true' && process.env.NEXT_PHASE !== 'phase-production-build') {
+    if (process.env.SEED_IF_EMPTY === 'true' && process.env.CHEATAI_BUILD !== '1') {
       const { totalDocs } = await payload.count({ collection: 'categories' })
       if (totalDocs === 0) {
         const { seed } = await import('./seed/index')
