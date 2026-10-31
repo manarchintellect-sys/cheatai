@@ -197,13 +197,13 @@ export function HeaderActions({ nav }: { nav: NavItem[] }) {
         <button className="btn btn-yellow max-md:hidden" onClick={() => setSub(true)}>
           Подписаться
         </button>
-        <button className="btn btn-ink btn-icon lg:hidden" onClick={() => setMenu((m) => !m)} aria-expanded={menu} aria-controls="mobile-menu" aria-label="Меню">
+        <button className="btn btn-ink btn-icon xl:hidden" onClick={() => setMenu((m) => !m)} aria-expanded={menu} aria-controls="mobile-menu" aria-label="Меню">
           <Icon name={menu ? 'close' : 'menu'} />
         </button>
       </div>
 
       {menu && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[68px] z-50 overflow-y-auto border-t-[3px] border-line bg-paper lg:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[68px] z-50 overflow-y-auto border-t-[3px] border-line bg-paper xl:hidden">
           <nav aria-label="Мобильное меню" className="halftone grid gap-3 p-4">
             {nav.map((n, i) => (
               <a
